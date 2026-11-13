@@ -1,12 +1,11 @@
 @use "mixins" as *;
 
 @layer componenti {
-  // Home: progetti in evidenza, 1, 2 o 3 colonne
+  // Home: progetti in evidenza, 1 o 2 colonne
   .cards {
     display: grid;
     gap: var(--sp-5);
     @include da(md) { grid-template-columns: repeat(2, 1fr); }
-    @include da(lg) { grid-template-columns: repeat(3, 1fr); }
   }
 
   .card {
