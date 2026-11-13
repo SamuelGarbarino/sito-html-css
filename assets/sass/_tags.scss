@@ -1,0 +1,35 @@
+@use "mixins" as *;
+
+@layer componenti {
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    li { border: var(--border-w) solid var(--color-border-strong); border-radius: var(--radius-pill); padding: var(--sp-1) var(--sp-3); font-size: var(--fs-sm); }
+
+    // Variante con link (profili): il link riempie il tag ed è alto 44 px
+    &--links {
+      li { padding: 0; }
+      a { @include tap-target; padding-inline: var(--sp-4); font-weight: var(--fw-medium); }
+    }
+  }
+
+  .skill-group {
+    + .skill-group { margin-top: var(--sp-5); }
+    h3 { margin-bottom: var(--sp-3); }
+  }
+
+  // Badge di disponibilità con pallino verde
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    border: var(--border-w) solid var(--color-ink);
+    border-radius: var(--radius-pill);
+    padding: var(--sp-1) var(--sp-3);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    margin-bottom: var(--sp-5);
+    &::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: var(--color-success); }
+  }
+}

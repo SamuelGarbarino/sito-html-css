@@ -1,0 +1,21 @@
+@use "mixins" as *;
+
+@layer componenti {
+  .footer {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    padding-block: var(--sp-7);
+    a { color: var(--color-bg); }
+    // Su sfondo scuro l'anello di focus diventa chiaro
+    :focus-visible { outline-color: var(--color-bg); }
+    p { font-size: var(--fs-sm); }
+
+    &__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2) var(--sp-5);
+      margin-bottom: var(--sp-4);
+      a { @include tap-target; }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@use "mixins" as *;
+
+@layer componenti {
+  // Home: progetti in evidenza, 1, 2 o 3 colonne
+  .cards {
+    display: grid;
+    gap: var(--sp-5);
+    @include da(md) { grid-template-columns: repeat(2, 1fr); }
+    @include da(lg) { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    background: var(--color-bg);
+    border-radius: var(--radius);
+    padding: var(--sp-3) var(--sp-3) var(--sp-5);
+
+    img { border-radius: var(--radius-sm); aspect-ratio: 16 / 9; object-fit: cover; width: 100%; }
+
+    &__body { display: flex; flex-direction: column; gap: var(--sp-2); padding-inline: var(--sp-2); flex: 1; }
+    &__exif { font-size: var(--fs-xs); font-weight: var(--fw-semibold); letter-spacing: 0.04em; color: var(--color-ink-soft); font-variant-numeric: tabular-nums; }
+    &__title { font-family: var(--font-sans); font-size: var(--fs-lg); font-weight: var(--fw-semibold); line-height: var(--lh-heading); }
+    &__facts {
+      dt { font-weight: var(--fw-semibold); }
+      dd + dt { margin-top: var(--sp-2); }
+    }
+
+    // Tutta la scheda è cliccabile: il link si allarga sull'intera card, il focus si vede sulla card
+    &__link {
+      margin-top: auto;
+      padding-top: var(--sp-2);
+      font-weight: var(--fw-semibold);
+      &::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius); }
+    }
+    &:focus-within { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
+    &__link:focus-visible { outline: none; }
+    @include hover { box-shadow: var(--shadow-card); }
+
+    @include movimento {
+      transition: box-shadow var(--dur) var(--ease);
+    }
+  }
+
+  // Pagina Progetti: CSS Grid, una colonna su mobile e due da 768 px
+  .projects-grid {
+    display: grid;
+    gap: var(--sp-5);
+    grid-template-columns: minmax(0, 1fr);
+    .card { background: var(--color-surface); }
+    @include da(md) { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-6); }
+  }
+}

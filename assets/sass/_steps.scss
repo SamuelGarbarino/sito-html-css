@@ -1,0 +1,16 @@
+@layer componenti {
+  // "Come lavoro": numeri 01-04 generati con un contatore CSS
+  .steps {
+    --bs-gutter-x: var(--sp-5);
+    --bs-gutter-y: var(--sp-5);
+    counter-reset: step;
+    > li { counter-increment: step; }
+    p { color: var(--color-ink-soft); margin-top: var(--sp-1); }
+
+    &__item {
+      border-top: var(--border-w) solid var(--color-ink);
+      padding-top: var(--sp-4);
+      &::before { content: "0" counter(step); display: block; font-family: var(--font-serif); font-size: var(--fs-xl); color: var(--color-accent); margin-bottom: var(--sp-2); }
+    }
+  }
+}

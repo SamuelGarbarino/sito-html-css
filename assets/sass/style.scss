@@ -1,0 +1,38 @@
+// Punto di ingresso. Ordine dei livelli: Bootstrap per primo, cosi i token e i componenti propri lo sovrascrivono.
+@use "sass:meta";
+
+@layer bootstrap, reset, tokens, base, componenti, utilita;
+
+// Bootstrap 5.3 richiede @import per configurare le variabili (deprecation silenziati in package.json).
+@import "bootstrap-config";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+$utilities: map-get-multiple($utilities, ("display", "margin", "align-items", "white-space"));
+
+@layer bootstrap {
+  @import "bootstrap/scss/root";
+  @import "bootstrap/scss/reboot";
+  @import "bootstrap/scss/containers";
+  @import "bootstrap/scss/grid";
+  @import "bootstrap/scss/helpers/visually-hidden";
+  @import "bootstrap/scss/utilities/api";
+}
+
+@include meta.load-css("tokens");
+@include meta.load-css("fonts");
+@include meta.load-css("base");
+@include meta.load-css("layout");
+@include meta.load-css("header");
+@include meta.load-css("buttons");
+@include meta.load-css("viewfinder");
+@include meta.load-css("cards");
+@include meta.load-css("steps");
+@include meta.load-css("tags");
+@include meta.load-css("cv");
+@include meta.load-css("form");
+@include meta.load-css("footer");
+@include meta.load-css("utilities");

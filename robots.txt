@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samuelgarbarino.github.io/sito-html-css/sitemap.xml

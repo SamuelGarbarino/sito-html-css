@@ -1,0 +1,48 @@
+@use "mixins" as *;
+
+@layer componenti {
+  .form {
+    display: grid;
+    gap: var(--sp-5);
+    max-width: 40rem;
+    .btn { justify-self: start; }
+  }
+
+  .field {
+    display: grid;
+    gap: var(--sp-2);
+    label { font-weight: var(--fw-semibold); }
+    &__optional { font-weight: var(--fw-regular); color: var(--color-ink-soft); }
+    &__hint { font-size: var(--fs-sm); color: var(--color-ink-soft); }
+    // Errore visibile senza JS: compare solo dopo che l'utente ha toccato il campo (:user-invalid)
+    &__error { display: none; font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--color-error); }
+    &:has(:user-invalid) &__error { display: block; }
+
+    input, textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: var(--sp-2) var(--sp-3);
+      font: inherit;
+      color: var(--color-ink);
+      background: var(--color-bg);
+      border: var(--border-w-strong) solid var(--color-border-strong);
+      border-radius: var(--radius-sm);
+      @include hover { border-color: var(--color-ink); }
+      // Errore: bordo spesso (il testo lo dà il browser), mai solo il colore
+      &:user-invalid { border-color: var(--color-error); border-width: 4px; }
+    }
+    textarea { min-height: 9rem; resize: vertical; }
+  }
+
+  // Checkbox della privacy: casella a sinistra, testo a destra
+  .check {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--sp-3);
+    align-items: start;
+    input { width: 1.5rem; height: 1.5rem; margin: 0; accent-color: var(--color-accent); }
+    label { font-weight: var(--fw-regular); }
+    .field__error { grid-column: 1 / -1; }
+    &:has(:user-invalid) .field__error { display: block; }
+  }
+}

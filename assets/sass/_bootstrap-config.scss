@@ -1,0 +1,23 @@
+// Variabili di Bootstrap dai valori di _tokens.scss (stessi valori, tenerli allineati).
+$primary: #c72e08;
+$body-color: #1b1815;
+$body-bg: #ffffff;
+$secondary-color: #57504a;
+$link-color: #c72e08;
+$link-hover-color: #a92707;
+$font-family-base: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+$headings-font-family: "Literata", Georgia, serif;
+$headings-font-weight: 500;
+$headings-color: #1b1815;
+$font-size-base: 1.0625rem;
+$line-height-base: 1.6;
+$border-radius: 4px;
+$border-radius-lg: 8px;
+$border-color: #e2dbd4;
+$container-padding-x: 1rem;
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-negative-margins: false;
+$enable-grid-classes: true;
+$grid-gutter-width: 1.5rem;
+$grid-breakpoints: (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1280px, xxl: 1536px); // md = 48em, lg = 64em come nei token

@@ -1,0 +1,14 @@
+{
+  "name": "sito-html-css",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sito personale di Samuel Garbarino in HTML, Sass e Bootstrap",
+  "scripts": {
+    "build": "sass assets/sass/style.scss assets/css/style.css --style=compressed --no-source-map --load-path=node_modules --silence-deprecation=import,global-builtin,color-functions,if-function",
+    "watch": "sass assets/sass/style.scss assets/css/style.css --watch --no-source-map --load-path=node_modules --silence-deprecation=import,global-builtin,color-functions,if-function"
+  },
+  "devDependencies": {
+    "bootstrap": "~5.3.3",
+    "sass": "^1.80.0"
+  }
+}

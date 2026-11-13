@@ -1,0 +1,29 @@
+// Mixin del sito, inclusi con @use "mixins" as * nei partial.
+@use "sass:map";
+
+// Breakpoint in em, mobile first (gli stessi della griglia di Bootstrap in _bootstrap-config.scss)
+$breakpoints: (md: 48em, lg: 64em);
+
+// Media query da un breakpoint in su: @include da(md) { ... }
+@mixin da($bp) {
+  @media (min-width: map.get($breakpoints, $bp)) { @content; }
+}
+
+// Hover solo sui dispositivi con puntatore: sul touch lo stato resterebbe appiccicato dopo il tocco
+@mixin hover {
+  @media (hover: hover) {
+    &:hover { @content; }
+  }
+}
+
+// Transizioni solo se l'utente non ha chiesto di ridurre il movimento
+@mixin movimento {
+  @media (prefers-reduced-motion: no-preference) { @content; }
+}
+
+// Bersaglio touch di almeno 44 px di altezza (WCAG 2.5.8)
+@mixin tap-target {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+}

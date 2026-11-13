@@ -1,0 +1,18 @@
+@layer componenti {
+  /* Cornice di selezione: quattro angoli a L disegnati con gradienti, decorativi */
+  .viewfinder { position: relative; padding: var(--sp-3); }
+  .viewfinder::after {
+    --c: var(--viewfinder-color); --s: var(--viewfinder-size); --w: var(--viewfinder-w);
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      linear-gradient(var(--c) 0 0) top left / var(--s) var(--w),
+      linear-gradient(var(--c) 0 0) top left / var(--w) var(--s),
+      linear-gradient(var(--c) 0 0) top right / var(--s) var(--w),
+      linear-gradient(var(--c) 0 0) top right / var(--w) var(--s),
+      linear-gradient(var(--c) 0 0) bottom left / var(--s) var(--w),
+      linear-gradient(var(--c) 0 0) bottom left / var(--w) var(--s),
+      linear-gradient(var(--c) 0 0) bottom right / var(--s) var(--w),
+      linear-gradient(var(--c) 0 0) bottom right / var(--w) var(--s);
+    background-repeat: no-repeat;
+  }
+}

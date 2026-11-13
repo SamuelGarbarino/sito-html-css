@@ -1,0 +1,83 @@
+@use "mixins" as *;
+
+/* Token del sito personale di Samuel Garbarino. Unica fonte dei valori per 05-sito.
+   Contrasti verificati con risorse/strumenti/contrasto.ts (tabella in design-system.md). */
+@layer tokens {
+  :root {
+    /* Colori per ruolo */
+    --color-bg: #ffffff;
+    --color-surface: #f6f2ee;        /* carta: fasce alterne, card */
+    --color-ink: #1b1815;            /* testo principale, 17.67:1 su bg */
+    --color-ink-soft: #57504a;       /* testo secondario, 7.91:1 su bg, 7.11:1 su surface */
+    --color-accent: #c72e08;         /* link, bottone primario, 5.49:1 su bg */
+    --color-accent-hover: #a92707;   /* hover del bottone, bianco sopra 7.04:1 */
+    --color-accent-display: #e63709; /* solo segni grandi e superfici, mai testo piccolo */
+    --color-on-accent: #ffffff;
+    --color-border-strong: #8a8079;  /* bordi dei campi, 3.85:1 su bg */
+    --color-border: #e2dbd4;         /* linee decorative */
+    --color-focus: #1b1815;          /* anello di focus */
+    --color-error: #b3261e;          /* 6.53:1 su bg, sempre con testo "Errore:" */
+    --color-success: #1e6b3a;        /* 6.52:1 su bg */
+
+    /* Font locali (woff2 in assets/fonts) */
+    --font-serif: "Literata", Georgia, serif;
+    --font-sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    /* Scala tipografica fluida (360 → 1440 px) */
+    --fs-xs: 0.8125rem;
+    --fs-sm: 0.9375rem;
+    --fs-base: 1.0625rem;
+    --fs-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+    --fs-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.875rem);
+    --fs-2xl: clamp(1.875rem, 1.5rem + 1.7vw, 2.875rem);
+    --fs-display: clamp(2.5rem, 1.75rem + 3.4vw, 4.75rem);
+    --lh-tight: 1.1;
+    --lh-heading: 1.2;
+    --lh-body: 1.6;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --tracking-caps: 0.08em;
+    --measure: 65ch;
+
+    /* Spaziature (base 4 px) */
+    --sp-1: 0.25rem;
+    --sp-2: 0.5rem;
+    --sp-3: 0.75rem;
+    --sp-4: 1rem;
+    --sp-5: 1.5rem;
+    --sp-6: 2rem;
+    --sp-7: 3rem;
+    --sp-8: 4rem;
+    --sp-9: 6rem;
+    --gutter: 1rem;                  /* margine laterale su mobile */
+    --container: 72rem;
+
+    /* Raggi, bordi, ombre */
+    --radius-sm: 4px;
+    --radius: 8px;
+    --radius-pill: 999px;
+    --border-w: 1px;
+    --border-w-strong: 2px;
+    --focus-ring: 3px solid var(--color-focus);
+    --focus-offset: 3px;
+    --shadow-card: 0 1px 2px rgb(27 24 21 / 0.06), 0 8px 24px rgb(27 24 21 / 0.08);
+
+    /* Angoli della cornice di selezione */
+    --viewfinder-size: 1.25rem;
+    --viewfinder-w: 2px;
+    --viewfinder-color: var(--color-accent-display);
+
+    /* Movimento (usato solo dentro prefers-reduced-motion: no-preference) */
+    --dur: 180ms;
+    --ease: cubic-bezier(0.2, 0, 0, 1);
+
+    /* Altezza minima dei controlli principali */
+    --tap: 44px;
+  }
+
+  @include da(md) {
+    :root { --gutter: 2rem; }
+  }
+}

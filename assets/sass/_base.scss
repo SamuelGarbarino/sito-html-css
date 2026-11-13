@@ -1,0 +1,40 @@
+@use "mixins" as *;
+
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, ul:not(.row), ol:not(.row), dl, dd, figure { margin: 0; }
+  ul[class], ol[class] { list-style: none; padding: 0; }
+  ul:not([class]) { padding-left: var(--sp-5); }
+  img { display: block; max-width: 100%; height: auto; }
+}
+
+@layer base {
+  // Spazio per l'header sticky: su mobile va su due righe (113 px), il focus non deve finirci sotto
+  html {
+    scroll-padding-top: 8rem;
+    @include da(md) { scroll-padding-top: 5rem; }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--fs-base);
+    line-height: var(--lh-body);
+    color: var(--color-ink);
+    background: var(--color-bg);
+  }
+
+  h1, h2 { font-family: var(--font-serif); font-weight: var(--fw-medium); line-height: var(--lh-heading); text-wrap: balance; }
+  h2 { font-size: var(--fs-xl); }
+  h3 { font-family: var(--font-sans); font-size: var(--fs-lg); font-weight: var(--fw-semibold); line-height: var(--lh-heading); }
+  p { max-width: var(--measure); }
+
+  a {
+    color: var(--color-accent);
+    text-underline-offset: 0.2em;
+    @include hover { text-decoration-thickness: 2px; }
+  }
+
+  :focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
+  // <main tabindex="-1"> riceve il focus dal link "Vai al contenuto": non è un controllo, niente anello
+  main:focus-visible { outline: none; }
+}

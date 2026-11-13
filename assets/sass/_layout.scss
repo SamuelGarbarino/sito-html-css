@@ -1,0 +1,72 @@
+@use "mixins" as *;
+
+@layer componenti {
+  // Link "Vai al contenuto": fuori schermo finché non riceve il focus
+  .skip {
+    position: absolute;
+    left: var(--sp-4);
+    top: -100px;
+    background: var(--color-ink);
+    color: var(--color-bg);
+    padding: var(--sp-2) var(--sp-4);
+    z-index: 10;
+    &:focus { top: var(--sp-2); }
+  }
+
+  /* .container è di Bootstrap: qui si allinea ai token */
+  .container { max-width: calc(var(--container) + 2 * var(--gutter)); padding-inline: var(--gutter); margin-inline: auto; width: 100%; }
+
+  .section {
+    padding-block: var(--sp-8);
+    &--surface { background: var(--color-surface); }
+    &--after-head { padding-top: 0; }
+    &__head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--sp-3); margin-bottom: var(--sp-6); }
+  }
+
+  .eyebrow { font-size: var(--fs-xs); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--color-ink-soft); }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--sp-3); }
+
+  // Hero della home
+  .hero {
+    padding-block: var(--sp-7) var(--sp-8);
+    &__title { font-size: var(--fs-display); line-height: var(--lh-tight); margin-block: var(--sp-2) var(--sp-4); }
+    &__lead { font-size: var(--fs-lg); margin-bottom: var(--sp-5); }
+    &__photo { max-width: 22rem; }
+  }
+
+  // Righe della griglia Bootstrap: gutter dai token, mai più larga del padding del container
+  .row {
+    --bs-gutter-x: var(--sp-6);
+    --bs-gutter-y: var(--sp-6);
+    // Due colonne: titolo a sinistra, contenuto a destra
+    &--split {
+      --bs-gutter-x: var(--sp-5);
+      --bs-gutter-y: var(--sp-5);
+      .actions { margin-top: var(--sp-5); }
+    }
+  }
+
+  // Testata delle pagine interne
+  .page-head {
+    padding-block: var(--sp-7) var(--sp-6);
+    h1 { font-size: var(--fs-2xl); margin-block: var(--sp-2) var(--sp-4); }
+    p + p { margin-top: var(--sp-4); }
+    .status { margin-top: var(--sp-5); margin-bottom: 0; }
+    .actions { margin-top: var(--sp-5); }
+    &--tight { padding-bottom: var(--sp-5); }
+  }
+
+  // Testo lungo in più paragrafi (nota privacy)
+  .prose p + p { margin-top: var(--sp-4); }
+
+  .quote { font-family: var(--font-serif); font-size: var(--fs-xl); line-height: 1.35; margin-bottom: var(--sp-5); }
+
+  // In fondo al file: da tablet in su queste regole devono vincere su quelle sopra
+  @include da(md) {
+    .section { padding-block: var(--sp-9); }
+    .hero { padding-block: var(--sp-9); }
+    .hero__photo { margin-inline-start: auto; }
+    .page-head { padding-block: var(--sp-9) var(--sp-7); }
+    .row--split { --bs-gutter-x: var(--sp-7); }
+  }
+}
